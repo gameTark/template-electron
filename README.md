@@ -22,3 +22,7 @@
 ## function library
 
 - [just](https://github.com/angus-c/just/)
+
+## file operation
+
+- [fs-extra](https://github.com/jprichardson/node-fs-extra)
