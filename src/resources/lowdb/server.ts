@@ -16,6 +16,7 @@ const db = new Low<DbSchema>(adapter, { posts: [], user: { name: '', age: 0 } })
 const initializeDb = async () => {
     await db.read();
     // デフォルト値を設定
+    if (db.data != null) return;
     db.data ||= { posts: [], user: { name: '', age: 0 } };
     await db.write();
 }
