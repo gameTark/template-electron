@@ -12,9 +12,13 @@
 
 ## database
 
-- [dexie](https://dexie.org/)
+- [lowdb](https://dexie.org/)
 
 ## form and validation
 
 - [yup](https://github.com/jquense/yup)
 - [react-hook-form](https://www.react-hook-form.com/)
+
+## function library
+
+- [just](https://github.com/angus-c/just/)

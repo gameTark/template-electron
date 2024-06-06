@@ -1,6 +1,10 @@
 import { app, BrowserWindow } from 'electron'
+import server from '../resources/lowdb/server'
 
 app.whenReady().then(() => {
+  console.log(server.initialized.then(() => {
+    console.log(server.db)
+  }))
   const win = new BrowserWindow({
     title: 'Main window',
     webPreferences: {

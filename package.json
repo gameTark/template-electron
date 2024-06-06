@@ -16,6 +16,8 @@
     "dexie": "^4.0.7",
     "dexie-react-hooks": "^1.1.7",
     "dotenv": "^16.4.5",
+    "just": "^0.1.8",
+    "lowdb": "^7.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "yup": "^1.4.0"
