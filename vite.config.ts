@@ -1,9 +1,11 @@
 /// <reference types="vitest" />
 import electron from 'vite-plugin-electron/simple'
 import react from '@vitejs/plugin-react-swc'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default {
   plugins: [
+    tsconfigPaths(),
     react(),
     electron({
       main: {
