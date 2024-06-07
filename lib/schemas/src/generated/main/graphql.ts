@@ -30,5 +30,12 @@ export type Book = {
 
 export type Query = {
   __typename?: 'Query';
+  author?: Maybe<Author>;
+  authors?: Maybe<Array<Author>>;
   books?: Maybe<Array<Book>>;
+};
+
+
+export type QueryAuthorArgs = {
+  Id?: InputMaybe<Scalars['ID']['input']>;
 };
