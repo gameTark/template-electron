@@ -1,17 +1,17 @@
 import { app, BrowserWindow } from "electron";
-
-import server from "../resources/lowdb/server";
+import { join } from 'path'
+// import server from "../resources/lowdb/server";
 
 app.whenReady().then(() => {
-  console.log(
-    server.initialized.then(() => {
-      console.log(server.db);
-    }),
-  );
+  // console.log(
+  //   server.initialized.then(() => {
+  //     console.log(server.db);
+  //   }),
+  // );
   const win = new BrowserWindow({
     title: "Main window",
     webPreferences: {
-      preload: "./preload.mjs",
+      preload: join(app.getAppPath(), 'dist-electron', "preload.mjs"),
     },
   });
   win.webContents.openDevTools();
@@ -21,6 +21,6 @@ app.whenReady().then(() => {
     win.loadURL(process.env.VITE_DEV_SERVER_URL);
   } else {
     // Load your file
-    win.loadFile("dist/index.html");
+    win.loadFile(join(app.getAppPath(), 'dist', 'index.html'));
   }
 });
