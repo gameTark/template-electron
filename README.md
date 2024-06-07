@@ -26,6 +26,7 @@
 ## file operation
 
 - [fs-extra](https://github.com/jprichardson/node-fs-extra)
+- [file-type](https://www.npmjs.com/package/file-type)
 
 ## test
 
