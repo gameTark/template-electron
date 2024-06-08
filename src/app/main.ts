@@ -1,20 +1,20 @@
 import { join } from "path";
 import { app, BrowserWindow, ipcMain } from "electron";
-import { graphql, buildSchema } from 'graphql'
- 
+import { buildSchema, graphql } from "graphql";
+
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
   type Query {
     hello: String
   }
-`)
- 
+`);
+
 // The rootValue provides a resolver function for each API endpoint
 var rootValue = {
   hello() {
-    return "Hello world!"
-  }
-}
+    return "Hello world!";
+  },
+};
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
@@ -27,13 +27,13 @@ app.whenReady().then(() => {
   win.webContents.openDevTools();
 
   // const resolvers  = []
-  ipcMain.handle('gql', async (_e: any, query: string) => {
+  ipcMain.handle("gql", async (_e: any, query: string) => {
     return await graphql({
       schema,
       source: query,
-      rootValue
-    })
-  })
+      rootValue,
+    });
+  });
 
   if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL);

@@ -1,6 +1,6 @@
 // import { type IPCRendererType } from "../app/ipc/renderer";
 
-declare module "*.graphql"
+declare module "*.graphql";
 
 declare module "process" {
   global {
@@ -14,9 +14,11 @@ declare module "process" {
 }
 interface Window {
   mainProcess: {
-    gql: <Result = any>(query: string) => Promise<{
-      data: Result
-    }>
+    gql: <Result = any>(
+      query: string,
+    ) => Promise<{
+      data: Result;
+    }>;
   };
 }
 declare var window: Window;
