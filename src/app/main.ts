@@ -1,16 +1,26 @@
 import { join } from "path";
 import { app, BrowserWindow, ipcMain } from "electron";
 import { buildSchema, graphql } from "graphql";
+import rowSchema from "schemas/schema.graphql";
 
-// Construct a schema, using GraphQL schema language
-var schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
-
-// The rootValue provides a resolver function for each API endpoint
-var rootValue = {
+const schema = buildSchema(rowSchema);
+const rootValue = {
+  books() {
+    return [
+      {
+        id: "asdfasdf",
+        title: "sadfasdfxzcvx",
+        author: {
+          id: "sadfasdfasd",
+          name: "asfasffsdasdaf",
+          age: "asfdslkjsfdklsdafj",
+        },
+      },
+    ];
+  },
+  rollThreeDice() {
+    return [1, 2, 3];
+  },
   hello() {
     return "Hello world!";
   },
@@ -19,6 +29,11 @@ var rootValue = {
 app.whenReady().then(() => {
   const win = new BrowserWindow({
     title: "Main window",
+    // fullscreen: true,
+    // frame: false,
+    width: 1000,
+    height: 500,
+    transparent: true,
     webPreferences: {
       preload: join(app.getAppPath(), "dist-electron", "preload.mjs"),
     },

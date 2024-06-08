@@ -2,9 +2,17 @@ import { Button, Flex, Text } from "@radix-ui/themes";
 
 // import * as gql from "schemas/src/generated/renderer/gql";
 const Hoge = () => {
+  window.mainProcess.gql(`{ hello }`).then((res) => console.log(res.data));
+  window.mainProcess.gql(`{ rollThreeDice }`).then((res) => console.log(res.data));
   window.mainProcess
-    .gql<{ hello: "world" }>("{ hello }")
-    .then((res) => console.log(res.data.hello));
+    .gql(
+      `query GetBooks {
+  books {
+    title
+  }
+}`,
+    )
+    .then((res) => console.log(res.data));
   return <>hoge</>;
 };
 

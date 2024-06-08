@@ -38,7 +38,7 @@ export type GetBooksQuery = { __typename?: 'Query', books?: Array<{ __typename?:
 
 
 export const GetBooksDocument = gql`
-    query GetBooks {
+query GetBooks {
   books {
     title
   }
