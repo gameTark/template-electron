@@ -20,84 +20,65 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
-export type Author = {
-  __typename?: 'Author';
-  age?: Maybe<Scalars['Int']['output']>;
-  id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
-};
-
 export type Book = {
   __typename?: 'Book';
-  author: Author;
-  id: Scalars['ID']['output'];
+  author: Scalars['String']['output'];
   title: Scalars['String']['output'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  author?: Maybe<Author>;
-  authors?: Maybe<Array<Author>>;
   books?: Maybe<Array<Book>>;
 };
 
-
-export type QueryAuthorArgs = {
-  Id?: InputMaybe<Scalars['ID']['input']>;
-};
-
-export type GetAuthorQueryVariables = Exact<{
-  Id?: InputMaybe<Scalars['ID']['input']>;
-}>;
+export type GetBooksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAuthorQuery = { __typename?: 'Query', author?: { __typename?: 'Author', name: string, age?: number | null } | null };
+export type GetBooksQuery = { __typename?: 'Query', books?: Array<{ __typename?: 'Book', title: string }> | null };
 
 
-export const GetAuthorDocument = gql`
-    query GetAuthor($Id: ID) {
-  author(Id: $Id) {
-    name
-    age
+export const GetBooksDocument = gql`
+    query GetBooks {
+  books {
+    title
   }
 }
     `;
-export type GetAuthorComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<GetAuthorQuery, GetAuthorQueryVariables>, 'query'>;
+export type GetBooksComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<GetBooksQuery, GetBooksQueryVariables>, 'query'>;
 
-    export const GetAuthorComponent = (props: GetAuthorComponentProps) => (
-      <ApolloReactComponents.Query<GetAuthorQuery, GetAuthorQueryVariables> query={GetAuthorDocument} {...props} />
+    export const GetBooksComponent = (props: GetBooksComponentProps) => (
+      <ApolloReactComponents.Query<GetBooksQuery, GetBooksQueryVariables> query={GetBooksDocument} {...props} />
     );
     
 
 /**
- * __useGetAuthorQuery__
+ * __useGetBooksQuery__
  *
- * To run a query within a React component, call `useGetAuthorQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAuthorQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetBooksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBooksQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetAuthorQuery({
+ * const { data, loading, error } = useGetBooksQuery({
  *   variables: {
- *      Id: // value for 'Id'
  *   },
  * });
  */
-export function useGetAuthorQuery(baseOptions?: Apollo.QueryHookOptions<GetAuthorQuery, GetAuthorQueryVariables>) {
+export function useGetBooksQuery(baseOptions?: Apollo.QueryHookOptions<GetBooksQuery, GetBooksQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetAuthorQuery, GetAuthorQueryVariables>(GetAuthorDocument, options);
+        return Apollo.useQuery<GetBooksQuery, GetBooksQueryVariables>(GetBooksDocument, options);
       }
-export function useGetAuthorLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAuthorQuery, GetAuthorQueryVariables>) {
+export function useGetBooksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBooksQuery, GetBooksQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetAuthorQuery, GetAuthorQueryVariables>(GetAuthorDocument, options);
+          return Apollo.useLazyQuery<GetBooksQuery, GetBooksQueryVariables>(GetBooksDocument, options);
         }
-export function useGetAuthorSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetAuthorQuery, GetAuthorQueryVariables>) {
+export function useGetBooksSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetBooksQuery, GetBooksQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetAuthorQuery, GetAuthorQueryVariables>(GetAuthorDocument, options);
+          return Apollo.useSuspenseQuery<GetBooksQuery, GetBooksQueryVariables>(GetBooksDocument, options);
         }
-export type GetAuthorQueryHookResult = ReturnType<typeof useGetAuthorQuery>;
-export type GetAuthorLazyQueryHookResult = ReturnType<typeof useGetAuthorLazyQuery>;
-export type GetAuthorSuspenseQueryHookResult = ReturnType<typeof useGetAuthorSuspenseQuery>;
-export type GetAuthorQueryResult = Apollo.QueryResult<GetAuthorQuery, GetAuthorQueryVariables>;
+export type GetBooksQueryHookResult = ReturnType<typeof useGetBooksQuery>;
+export type GetBooksLazyQueryHookResult = ReturnType<typeof useGetBooksLazyQuery>;
+export type GetBooksSuspenseQueryHookResult = ReturnType<typeof useGetBooksSuspenseQuery>;
+export type GetBooksQueryResult = Apollo.QueryResult<GetBooksQuery, GetBooksQueryVariables>;

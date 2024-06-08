@@ -12,6 +12,4 @@ type Author {
 
 type Query {
   books: [Book!]
-  authors: [Author!]
-  author(Id: ID): Author
 }

@@ -14,28 +14,13 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
-export type Author = {
-  __typename?: 'Author';
-  age?: Maybe<Scalars['Int']['output']>;
-  id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
-};
-
 export type Book = {
   __typename?: 'Book';
-  author: Author;
-  id: Scalars['ID']['output'];
+  author: Scalars['String']['output'];
   title: Scalars['String']['output'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  author?: Maybe<Author>;
-  authors?: Maybe<Array<Author>>;
   books?: Maybe<Array<Book>>;
-};
-
-
-export type QueryAuthorArgs = {
-  Id?: InputMaybe<Scalars['ID']['input']>;
 };
