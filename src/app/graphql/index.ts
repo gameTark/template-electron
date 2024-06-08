@@ -1,9 +1,9 @@
 import { buildSchema, graphql } from "graphql";
-import rowSchema from "schemas/schema.graphql";
+import typeDefs from "schemas/schema.graphql?raw";
+
 import resolver from "./resolvers";
 
-const schema = buildSchema(rowSchema);
-
+const schema = buildSchema(typeDefs);
 export const graphqlServer = (query: string) => {
   return graphql({
     schema,

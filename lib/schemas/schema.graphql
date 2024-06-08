@@ -10,6 +10,21 @@ type Author {
   age: Int
 }
 
+enum FileType {
+  FILE
+  DIRECTORY
+}
+
+type File {
+  type: FileType
+  path: String!
+  updatedAt: Float!
+  size: Int!
+}
+
 type Query {
-  books: [Book!]
+  hello: String!
+  file(path: String!): File
+  rollThreeDice: [Int!]!
+  books: [Book!]!
 }

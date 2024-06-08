@@ -8,8 +8,7 @@ const config: CodegenConfig = {
     "src/generated/renderer/gql.tsx": {
       plugins: [
         "typescript",
-        "typescript-operations",
-        "typescript-react-apollo"
+        "typescript-operations"
       ],
       config: {
         withComponent: true,

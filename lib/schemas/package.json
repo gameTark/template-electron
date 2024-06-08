@@ -12,7 +12,6 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@apollo/client": "^3.10.4"
   },
   "dependencies": {
     "@graphql-codegen/cli": "5.0.2",
@@ -23,7 +22,6 @@
     "typescript": "^5.4.5",
     "@graphql-codegen/introspection": "^4.0.3",
     "@graphql-codegen/typescript-operations": "^4.2.1",
-    "@graphql-codegen/typescript-react-apollo": "^4.3.0",
     "graphql": "^16.8.1",
     "graphql-tools": "^9.0.1"
   }

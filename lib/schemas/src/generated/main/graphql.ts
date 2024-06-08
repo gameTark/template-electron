@@ -14,13 +14,33 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type Author = {
+  __typename?: 'Author';
+  age?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+  name: Scalars['String']['output'];
+};
+
 export type Book = {
   __typename?: 'Book';
-  author: Scalars['String']['output'];
+  author: Author;
+  id: Scalars['ID']['output'];
   title: Scalars['String']['output'];
 };
 
+export type File = {
+  __typename?: 'File';
+  size: Scalars['Int']['output'];
+  type?: Maybe<FileType>;
+  updatedAt: Scalars['Int']['output'];
+};
+
+export enum FileType {
+  Directory = 'DIRECTORY',
+  File = 'FILE'
+}
+
 export type Query = {
   __typename?: 'Query';
-  books?: Maybe<Array<Book>>;
+  books: Array<Book>;
 };
