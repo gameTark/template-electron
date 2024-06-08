@@ -1,30 +1,7 @@
 import { join } from "path";
 import { app, BrowserWindow, ipcMain } from "electron";
-import { buildSchema, graphql } from "graphql";
-import rowSchema from "schemas/schema.graphql";
 
-const schema = buildSchema(rowSchema);
-const rootValue = {
-  books() {
-    return [
-      {
-        id: "asdfasdf",
-        title: "sadfasdfxzcvx",
-        author: {
-          id: "sadfasdfasd",
-          name: "asfasffsdasdaf",
-          age: "asfdslkjsfdklsdafj",
-        },
-      },
-    ];
-  },
-  rollThreeDice() {
-    return [1, 2, 3];
-  },
-  hello() {
-    return "Hello world!";
-  },
-};
+import { graphqlServer } from "./graphql";
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
@@ -43,11 +20,7 @@ app.whenReady().then(() => {
 
   // const resolvers  = []
   ipcMain.handle("gql", async (_e: any, query: string) => {
-    return await graphql({
-      schema,
-      source: query,
-      rootValue,
-    });
+    return await graphqlServer(query);
   });
 
   if (process.env.VITE_DEV_SERVER_URL) {
