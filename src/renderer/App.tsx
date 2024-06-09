@@ -1,30 +1,33 @@
 import { Button, Flex, Text } from "@radix-ui/themes";
 
 // import * as gql from "schemas/src/generated/renderer/gql";
-const path = "C:\\\\Program Files\\\\Derivative\\\\TouchDesigner\\\\bin";
+// const path = "C:\\\\Program Files\\\\Derivative\\\\TouchDesigner\\\\bin";
 
 const Hoge = () => {
-  window.mainProcess.gql(`{ hello }`).then((res) => console.log(res.data));
-  window.mainProcess.gql(`{ rollThreeDice }`).then((res) => console.log(res.data));
   window.mainProcess
     .gql(
       `query GetBooks {
   books {
-    title
+      title
+      author {
+        books {
+          title
+        }
+      }
   }
 }`,
     )
     .then((res) => console.log(res.data));
-  console.log(path);
-  window.mainProcess
-    .gql(
-      `{ file(path: "${path}") {
-    type
-    updatedAt
-    path
-  } }`,
-    )
-    .then((res) => console.log(res));
+  // console.log(path);
+  // window.mainProcess
+  //   .gql(
+  //     `{ file(path: "${path}") {
+  //   type
+  //   updatedAt
+  //   path
+  // } }`,
+  //   )
+  //   .then((res) => console.log(res));
   return <>hoge</>;
 };
 

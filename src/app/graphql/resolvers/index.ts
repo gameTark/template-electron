@@ -1,30 +1,15 @@
-import fs from "fs";
+import { BookSchema } from "./schema/Book";
+import { FileSchema } from "./schema/File";
 
 const resolver = {
   books() {
-    return [
-      {
-        id: "asdfasdf",
-        title: "sadfasdfxzcvx",
-        author: {
-          id: "sadfasdfasd",
-          name: "asfasffsdasdaf",
-          age: "asfdslkjsfdklsdafj",
-        },
-      },
-    ];
+    return [new BookSchema({
+      id: 'root',
+      title: 'root title'
+    })];
   },
   file: (args: { path: string }) => {
-    const file = fs.statSync(args.path);
-    return {
-      type: file.isDirectory() ? "DIRECTORY" : "FILE",
-      path: args.path,
-      updatedAt: Number(file.mtime),
-      size: file.size,
-    };
-  },
-  rollThreeDice() {
-    return [1, 2, 3];
+    return new FileSchema(args);
   },
   hello() {
     return "Hello world!";

@@ -1,13 +1,19 @@
-type Book {
+interface Node {
+  # The ID of the object.
+  id: ID!
+}
+
+type Book implements Node {
   id: ID!
   title: String!
   author: Author!
 }
 
-type Author {
+type Author implements Node {
   id: ID!
   name: String!
   age: Int
+  books: [Book]!
 }
 
 enum FileType {
@@ -16,7 +22,7 @@ enum FileType {
 }
 
 type File {
-  type: FileType
+  type: FileType!
   path: String!
   updatedAt: Float!
   size: Int!

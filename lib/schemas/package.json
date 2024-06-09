@@ -11,18 +11,20 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "devDependencies": {
-  },
   "dependencies": {
     "@graphql-codegen/cli": "5.0.2",
     "@graphql-codegen/client-preset": "4.2.6",
+    "@graphql-codegen/introspection": "^4.0.3",
     "@graphql-codegen/typescript": "4.0.7",
     "@graphql-codegen/typescript-document-nodes": "4.0.7",
-    "@graphql-codegen/typescript-resolvers": "4.1.0",
-    "typescript": "^5.4.5",
-    "@graphql-codegen/introspection": "^4.0.3",
     "@graphql-codegen/typescript-operations": "^4.2.1",
+    "@graphql-codegen/typescript-resolvers": "4.1.0",
     "graphql": "^16.8.1",
-    "graphql-tools": "^9.0.1"
+    "graphql-tools": "^9.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "tsx": "^4.15.1"
   }
 }
