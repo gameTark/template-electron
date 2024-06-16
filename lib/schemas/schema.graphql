@@ -30,6 +30,7 @@ type File {
 
 type Query {
   hello: String!
+  files: [File]!
   file(path: String!): File
   rollThreeDice: [Int!]!
   books: [Book!]!

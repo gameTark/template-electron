@@ -8,12 +8,14 @@ const config: CodegenConfig = {
     "src/generated/renderer/gql.tsx": {
       plugins: [
         "typescript",
-        "typescript-operations"
+        "typescript-operations",
+        "typescript-react-apollo"
       ],
       config: {
-        withComponent: true,
+        withComponent: false,
         withHOC: false,
         withHooks: true,
+        withMutationFn: true,
       }
     },
     "./graphql.schema.json": {

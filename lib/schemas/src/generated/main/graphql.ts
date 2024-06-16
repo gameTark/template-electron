@@ -52,6 +52,7 @@ export type Query = {
   __typename?: 'Query';
   books: Array<Book>;
   file?: Maybe<File>;
+  files: Array<Maybe<File>>;
   hello: Scalars['String']['output'];
   rollThreeDice: Array<Scalars['Int']['output']>;
 };
@@ -194,6 +195,7 @@ export type NodeResolvers<ContextType = any, ParentType extends ResolversParentT
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   books?: Resolver<Array<ResolversTypes['Book']>, ParentType, ContextType>;
   file?: Resolver<Maybe<ResolversTypes['File']>, ParentType, ContextType, RequireFields<QueryFileArgs, 'path'>>;
+  files?: Resolver<Array<Maybe<ResolversTypes['File']>>, ParentType, ContextType>;
   hello?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   rollThreeDice?: Resolver<Array<ResolversTypes['Int']>, ParentType, ContextType>;
 };

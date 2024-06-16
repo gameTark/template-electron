@@ -1,7 +1,7 @@
 import { join } from "path";
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow } from "electron";
 
-import { graphqlServer } from "./graphql";
+import main from "./main/server";
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
@@ -10,18 +10,13 @@ app.whenReady().then(() => {
     // frame: false,
     width: 1000,
     height: 500,
-    transparent: true,
+    // transparent: true,
     webPreferences: {
       preload: join(app.getAppPath(), "dist-electron", "preload.mjs"),
     },
   });
-
   win.webContents.openDevTools();
-
-  // const resolvers  = []
-  ipcMain.handle("gql", async (_e: any, query: string) => {
-    return await graphqlServer(query);
-  });
+  main();
 
   if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL);
