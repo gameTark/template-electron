@@ -1,9 +1,10 @@
-import { ApolloClient, ApolloProvider, gql, InMemoryCache, useQuery } from "@apollo/client";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { Button, Flex, Text } from "@radix-ui/themes";
 import { useGetBooksQuery } from 'schemas/src/generated/renderer/gql';
+import { PROTOCOLS } from "../constants/protocols";
 
 const client = new ApolloClient({
-  uri: "project-management-example://",
+  uri: `${PROTOCOLS.GQL}://`,
   cache: new InMemoryCache(),
 });
 

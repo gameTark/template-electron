@@ -7,3 +7,12 @@ query GetBooks {
   }
 }
 `;
+
+export const FILE_GET_FRAGMENT = gql`
+query GetFile($file: String) {
+  file (path: $file) {
+    name
+    path
+  }
+}
+`
